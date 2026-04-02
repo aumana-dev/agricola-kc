@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agrícola KC — Propuesta de Sitio Web</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1a6b2f;
+      --verde-medio: #2d8a4e;
+      --verde-claro: #e8f5ed;
+      --verde-acento: #4caf70;
+      --blanco: #ffffff;
+      --gris-claro: #f7f7f5;
+      --gris-texto: #2c2c2c;
+      --gris-muted: #666;
+      --sombra: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --radio: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      color: var(--gris-texto);
+      background: var(--blanco);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ═══════════════════════════════════════
+     BANNER PROPUESTA
+  ═══════════════════════════════════════ */
+    .banner-propuesta {
+      background: linear-gradient(90deg, #0f3d1c, var(--verde));
+      color: white;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .banner-propuesta strong {
+      color: #a8e6bc;
+    }
+
+    /* ═══════════════════════════════════════
+     NAVEGACIÓN
+  ═══════════════════════════════════════ */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 60px;
+      border-bottom: 1px solid #eee;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 86px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 0;
+      color: var(--verde);
+    }
+
+    .nav-logo img {
+      width: 190px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gris-texto);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--verde);
+      border-bottom: 2px solid var(--verde);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gris-texto);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ═══════════════════════════════════════
+     HERO
+  ═══════════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      min-height: 85vh;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .hero-imagen {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a5c2e 0%, #2d8a4e 40%, #4caf70 100%);
+    }
+
+    .hero-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-contenido {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px;
+      background: white;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      margin-bottom: 20px;
+    }
+
+    .hero-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      line-height: 1.1;
+      color: var(--verde);
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitulo {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--gris-muted);
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--verde);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+      width: fit-content;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primario:hover {
+      background: var(--verde-medio);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 107, 47, 0.25);
+    }
+
+    .btn-outline {
+      padding: 12px 32px;
+      border-radius: 50px;
+      border: 2px solid var(--verde);
+      color: var(--verde);
+      font-size: 14px;
+      font-weight: 600;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--verde);
+      color: white;
+    }
+
+    /* ═══════════════════════════════════════
+     SECCIÓN GENÉRICA
+  ═══════════════════════════════════════ */
+    .seccion {
+      padding: 100px 60px;
+    }
+
+    .seccion-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .seccion-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      margin-bottom: 12px;
+    }
+
+    .seccion-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      color: var(--verde);
+      margin-bottom: 16px;
+    }
+
+    .seccion-desc {
+      font-size: 17px;
+      color: var(--gris-muted);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════
+     VARIEDADES
+  ═══════════════════════════════════════ */
+    .categorias-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1.5px solid #ddd;
+      background: white;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--gris-texto);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tab:hover {
+      border-color: var(--verde);
+      color: var(--verde);
+    }
+
+    .tab.activo {
+      background: var(--verde);
+      color: white;
+      border-color: var(--verde);
+    }
+
+    .variedades-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto 48px;
+    }
+
+    .variedad-card {
+      background: var(--gris-claro);
+      border-radius: var(--radio);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .variedad-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--verde-acento);
+      box-shadow: 0 12px 32px rgba(26, 107, 47, 0.12);
+    }
+
+    .variedad-img {
+      width: 100%;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0;
+      color: transparent;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .variedad-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .variedad-card .variedad-img {
+      background: #f4f4f4;
+    }
+
+    .variedad-info {
+      padding: 16px 16px 14px;
+    }
+
+    .variedad-nombre {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--verde);
+      margin-bottom: 4px;
+    }
+
+    .variedad-tipo {
+      font-size: 13px;
+      color: var(--gris-muted);
+    }
+
+    .variedad-arrow {
+      font-size: 18px;
+      color: var(--verde-acento);
+      float: right;
+      margin-top: -20px;
+    }
+
+    .ver-todo-btn {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ═══════════════════════════════════════
+     DETALLE VARIEDAD
+  ═══════════════════════════════════════ */
+    .demo-variedad {
+      background: var(--gris-claro);
+      padding: 80px 60px;
+      border-top: 3px solid var(--verde-claro);
+    }
+
+    .demo-label {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .variedad-detalle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 940px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .variedad-detalle-img {
+      background-color: #f4f4f4;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0;
+      color: transparent;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .variedad-detalle-info {
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .variedad-detalle-tipo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      margin-bottom: 12px;
+    }
+
+    .variedad-detalle-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--verde);
+      margin-bottom: 16px;
+    }
+
+    .variedad-detalle-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--gris-muted);
+      margin-bottom: 28px;
+    }
+
+    .variedad-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .spec {
+      background: var(--verde-claro);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .spec-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--verde);
+    }
+
+    .spec-valor {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gris-texto);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════
+     ACERCA DE
+  ═══════════════════════════════════════ */
+    .acerca {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .acerca-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--verde);
+      margin-bottom: 20px;
+    }
+
+    .acerca-texto {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--gris-muted);
+      margin-bottom: 16px;
+    }
+
+    .acerca-img {
+      width: 100%;
+      height: 360px;
+      background: #f4f4f4;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════
+     CONTACTO
+  ═══════════════════════════════════════ */
+    .contacto {
+      background: var(--verde);
+      color: white;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contacto-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .contacto-info p {
+      font-size: 15px;
+      line-height: 1.8;
+      opacity: 0.85;
+      margin-bottom: 32px;
+    }
+
+    .contacto-datos {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .dato {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .dato-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .form-campo {
+      margin-bottom: 16px;
+    }
+
+    .form-campo label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 6px;
+    }
+
+    .form-campo input,
+    .form-campo textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-campo input::placeholder,
+    .form-campo textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-campo input:focus,
+    .form-campo textarea:focus {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-campo textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .form-fila {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-enviar {
+      background: white;
+      color: var(--verde);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-enviar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ═══════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════ */
+    footer {
+      background: #0f3d1c;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 48px 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .footer-col h4 {
+      color: var(--verde-acento);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .footer-col p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+     PROPUESTA COMERCIAL
+  ═══════════════════════════════════════ */
+    .propuesta {
+      background: #fafbf8;
+      border-top: 4px solid var(--verde);
+      padding: 80px 60px;
+    }
+
+    .propuesta-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .propuesta-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--verde);
+      margin-bottom: 12px;
+    }
+
+    .propuesta-header p {
+      font-size: 15px;
+      color: var(--gris-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+    }
+
+    .scope-card {
+      background: white;
+      border-radius: var(--radio);
+      padding: 28px;
+      border: 1px solid #e8e8e4;
+      transition: all 0.3s;
+    }
+
+    .scope-card:hover {
+      border-color: var(--verde-acento);
+      box-shadow: var(--sombra);
+    }
+
+    .scope-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .scope-titulo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gris-texto);
+      margin-bottom: 8px;
+    }
+
+    .scope-desc {
+      font-size: 13px;
+      color: var(--gris-muted);
+      line-height: 1.7;
+    }
+
+    .scope-status {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .status-incluido {
+      background: var(--verde-claro);
+      color: var(--verde);
+    }
+
+    .status-pendiente {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    /* Plan de trabajo */
+    .plan-trabajo {
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .plan-trabajo h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--verde);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .paso {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .paso:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      bottom: -28px;
+      width: 2px;
+      background: var(--verde-claro);
+    }
+
+    .paso-num {
+      width: 48px;
+      height: 48px;
+      background: var(--verde);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .paso-contenido h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gris-texto);
+      margin-bottom: 4px;
+      padding-top: 2px;
+    }
+
+    .paso-contenido p {
+      font-size: 14px;
+      color: var(--gris-muted);
+      line-height: 1.6;
+    }
+
+    .paso-tiempo {
+      font-size: 12px;
+      color: var(--verde);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Pricing */
+    .pricing {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+      border: 2px solid var(--verde);
+    }
+
+    .pricing-header {
+      background: var(--verde);
+      color: white;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .pricing-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-header p {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    .pricing-body {
+      padding: 32px;
+    }
+
+    .pricing-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0ec;
+      font-size: 14px;
+    }
+
+    .pricing-item:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-item-label {
+      color: var(--gris-texto);
+    }
+
+    .pricing-item-valor {
+      font-weight: 700;
+      color: var(--verde);
+    }
+
+    .pricing-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 8px;
+      margin-top: 12px;
+      border-top: 2px solid var(--verde);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .pricing-total span:last-child {
+      color: var(--verde);
+      font-size: 28px;
+    }
+
+    .pricing-nota {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gris-muted);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* Pendientes */
+    .pendientes {
+      max-width: 700px;
+      margin: 60px auto 0;
+      background: #fff8e1;
+      border-radius: var(--radio);
+      padding: 32px;
+      border: 1px solid #f0e0a0;
+    }
+
+    .pendientes h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #7a5c00;
+      margin-bottom: 16px;
+    }
+
+    .pendientes ul {
+      list-style: none;
+    }
+
+    .pendientes li {
+      font-size: 14px;
+      color: #5a4500;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(240, 224, 160, 0.5);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .pendientes li:last-child {
+      border-bottom: none;
+    }
+
+    .pendientes li::before {
+      content: '⏳';
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════
+     NOTAS IMPLEMENTACIÓN
+  ═══════════════════════════════════════ */
+    .nota-implementacion {
+      background: #f0f7f1;
+      padding: 60px;
+      border-top: 3px solid var(--verde-claro);
+    }
+
+    .nota-implementacion h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--verde);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .impl-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .impl-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #dde8df;
+    }
+
+    .impl-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--verde);
+      margin-bottom: 8px;
+    }
+
+    .impl-card p {
+      font-size: 13px;
+      color: var(--gris-muted);
+      line-height: 1.7;
+    }
+
+    .impl-card code {
+      background: #e8f5ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--verde);
+    }
+
+    /* ═══════════════════════════════════════
+     ANIMACIONES
+  ═══════════════════════════════════════ */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .variedades-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .scope-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid #eee;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-imagen {
+        min-height: 300px;
+      }
+
+      .hero-contenido {
+        padding: 48px 24px;
+      }
+
+      .hero-titulo {
+        font-size: 36px;
+      }
+
+      .seccion {
+        padding: 60px 24px;
+      }
+
+      .seccion-titulo {
+        font-size: 32px;
+      }
+
+      .variedades-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .categorias-tabs {
+        gap: 8px;
+      }
+
+      .tab {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .variedad-detalle {
+        grid-template-columns: 1fr;
+      }
+
+      .variedad-detalle-img {
+        min-height: 220px;
+      }
+
+      .variedad-detalle-info {
+        padding: 32px 24px;
+      }
+
+      .variedad-detalle-nombre {
+        font-size: 28px;
+      }
+
+      .demo-variedad {
+        padding: 48px 24px;
+      }
+
+      .acerca {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .acerca-img {
+        height: 240px;
+      }
+
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contacto-info h2 {
+        font-size: 32px;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 24px;
+      }
+
+      .propuesta {
+        padding: 60px 24px;
+      }
+
+      .scope-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impl-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nota-implementacion {
+        padding: 40px 24px;
+      }
+
+      .pricing {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .variedades-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .variedad-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .form-fila {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-titulo {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BANNER PROPUESTA -->
+  <div class="banner-propuesta">
+    📋 <strong>PROPUESTA VISUAL</strong> — weCode Studio para Agrícola KC · Vista previa de cómo quedará el sitio en
+    Squarespace
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#inicio" class="nav-logo" aria-label="Agrícola KC inicio">
+      <img src="images/logo-agricola-kc.svg" alt="Agrícola KC">
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="active">Inicio</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="#acerca">Acerca de</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ PÁGINA: INICIO ═══ -->
+  <section class="hero" id="inicio">
+    <div class="hero-imagen">
+      <img src="images/hero-inicio.jpg" alt="Campo agrícola de Agrícola KC">
+    </div>
+    <div class="hero-contenido">
+      <div class="hero-tag">Semillas de calidad · Costa Rica</div>
+      <h1 class="hero-titulo">Pasión por la tierra, compromiso con el futuro.</h1>
+      <p class="hero-subtitulo">Somos Agrícola KC, especializados en importación y venta de semillas de hortalizas,
+        vegetales y flores con acompañamiento en cada etapa del cultivo.</p>
+      <a href="catalogo.html" class="btn-primario">Ver catálogo completo →</a>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN: VARIEDADES ═══ -->
+  <section class="seccion" id="variedades">
+    <div class="seccion-header">
+      <div class="seccion-tag">Catálogo</div>
+      <h2 class="seccion-titulo">Variedades destacadas</h2>
+      <p class="seccion-desc">Explorá una muestra de categorías aquí y abrí el catálogo completo en una página aparte
+        para ver todo más ordenado.</p>
+    </div>
+
+    <div class="categorias-tabs">
+      <button class="tab activo" onclick="mostrarCategoria('tomate', this)">🍅 Tomate</button>
+      <button class="tab" onclick="mostrarCategoria('chile', this)">🌶️ Chile</button>
+      <button class="tab" onclick="mostrarCategoria('sandia', this)">🍉 Sandía</button>
+      <button class="tab" onclick="mostrarCategoria('zucchini', this)">🥒 Zucchini</button>
+      <button class="tab" onclick="mostrarCategoria('pepino', this)">🥒 Pepino</button>
+      <button class="tab" onclick="mostrarCategoria('otros', this)">🌱 Otros</button>
+    </div>
+
+    <div class="variedades-grid" id="grid-variedades">
+      <!-- TOMATE -->
+      <div class="variedad-card" data-cat="tomate"
+        onclick="verDetalle('Tomate Roma F1','Tomate · Variedad híbrida','Variedad de alta producción, ideal para cultivo intensivo. Fruto firme de color rojo intenso, excelente vida postcosecha y resistencia al transporte.','🍅','75 días','90–110g','Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/tomato-roma.jpg" alt="Tomate Roma F1"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Roma F1</div>
+          <div class="variedad-tipo">Tomate industrial</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="tomate"
+        onclick="verDetalle('Tomate Cherry','Tomate · Miniatura','Frutos pequeños y dulces ideales para ensaladas frescas y aperitivos. Planta vigorosa de crecimiento indeterminado.','🍅','65 días','15–25g','Templado–Cálido','Regular')">
+        <div class="variedad-img"><img src="images/tomato-cherry.png" alt="Tomate Cherry"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Cherry</div>
+          <div class="variedad-tipo">Tomate pequeño</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="tomate"
+        onclick="verDetalle('Tomate Marzano','Tomate · Alargado','Tomate tipo San Marzano, excelente para salsas y conservas. Pulpa espesa con pocas semillas.','🍅','80 días','100–130g','Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/tomato-marzano.png" alt="Tomate Marzano"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Marzano</div>
+          <div class="variedad-tipo">Tomate alargado</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="tomate"
+        onclick="verDetalle('Tomate Beefsteak','Tomate · Grande','Frutos grandes y carnosos ideales para rodajas y hamburguesas. Alta productividad en invernadero.','🍅','85 días','200–350g','Cálido','Abundante')">
+        <div class="variedad-img"><img src="images/tomato-beefsteak.jpg" alt="Tomate Beefsteak"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Beefsteak</div>
+          <div class="variedad-tipo">Tomate grande</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- CHILE -->
+      <div class="variedad-card" data-cat="chile" style="display:none"
+        onclick="verDetalle('Chile Jalapeño','Chile · Picante medio','Chile versátil de pungencia media, ampliamente utilizado fresco, en escabeche y en salsas. Planta compacta y productiva.','🌶️','70 días','30–50g','Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/chile-jalapeño.jpg" alt="Chile Jalapeño"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Jalapeño</div>
+          <div class="variedad-tipo">Chile picante medio</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="chile" style="display:none"
+        onclick="verDetalle('Chile Habanero','Chile · Muy picante','Uno de los chiles más picantes del mundo. Frutos pequeños y aromáticos, ideales para salsas especiales.','🌶️','90 días','8–15g','Tropical','Regular')">
+        <div class="variedad-img"><img src="images/chile-habanero.jpg" alt="Chile Habanero"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Habanero</div>
+          <div class="variedad-tipo">Chile muy picante</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="chile" style="display:none"
+        onclick="verDetalle('Chile Dulce','Chile · Sin picante','Chile tipo campana sin picante, crujiente y dulce. Ideal para ensaladas, rellenos y salteados.','🌶️','75 días','120–180g','Templado–Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/chile-dulce.jpg" alt="Chile Dulce"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Chile Dulce</div>
+          <div class="variedad-tipo">Chile sin picante</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="chile" style="display:none"
+        onclick="verDetalle('Chile Cayena','Chile · Picante','Chile largo y delgado de picor intenso. Muy usado deshidratado y en polvo para condimentos.','🌶️','72 días','15–25g','Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/chile-cayena.jpg" alt="Chile Cayena"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Cayena</div>
+          <div class="variedad-tipo">Chile picante</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- SANDÍA -->
+      <div class="variedad-card" data-cat="sandia" style="display:none"
+        onclick="verDetalle('Sandía Crimson Sweet','Sandía · Clásica','Variedad clásica de sandía rayada con pulpa roja y dulce. Frutos de buen tamaño y excelente transporte.','🍉','85 días','8–12 kg','Cálido','Abundante')">
+        <div class="variedad-img"><img src="images/sandia-crimson-sweet.jpg" alt="Sandía Crimson Sweet"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Crimson Sweet</div>
+          <div class="variedad-tipo">Sandía clásica</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="sandia" style="display:none"
+        onclick="verDetalle('Sandía Sugar Baby','Sandía · Pequeña','Sandía personal de tamaño compacto. Cáscara oscura, pulpa muy dulce y pocas semillas.','🍉','75 días','3–5 kg','Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/sandia-sugar-baby.jpg" alt="Sandía Sugar Baby"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Sugar Baby</div>
+          <div class="variedad-tipo">Sandía pequeña</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="sandia" style="display:none"
+        onclick="verDetalle('Sandía Charleston Gray','Sandía · Alargada','Sandía de forma alargada con cáscara gris verdosa. Pulpa roja, firme y de excelente sabor.','🍉','90 días','10–15 kg','Cálido','Abundante')">
+        <div class="variedad-img"><img src="images/sandia-charleston-gray.png" alt="Sandía Charleston Gray"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Charleston Gray</div>
+          <div class="variedad-tipo">Sandía alargada</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- ZUCCHINI -->
+      <div class="variedad-card" data-cat="zucchini" style="display:none"
+        onclick="verDetalle('Zucchini Verde Italia','Zucchini · Clásico','Zucchini verde oscuro de forma cilíndrica. Cosecha temprana, ideal para salteados y asados.','🥒','45 días','200–300g','Templado–Cálido','Regular')">
+        <div class="variedad-img"><img src="images/zucchini-verde-italia.jpg" alt="Zucchini Verde Italia"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Verde Italia</div>
+          <div class="variedad-tipo">Zucchini clásico</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="zucchini" style="display:none"
+        onclick="verDetalle('Zucchini Gold Rush','Zucchini · Amarillo','Variedad de color amarillo brillante, sabor suave y textura cremosa. Atractivo para presentación gourmet.','🥒','50 días','180–250g','Templado','Regular')">
+        <div class="variedad-img"><img src="images/zucchini-gold-rush.jpg" alt="Zucchini Gold Rush"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Gold Rush</div>
+          <div class="variedad-tipo">Zucchini amarillo</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="zucchini" style="display:none"
+        onclick="verDetalle('Zucchini Grey','Zucchini · Gris','Zucchini de piel gris verdosa moteada. Textura firme, ideal para cortes decorativos.','🥒','48 días','200–280g','Templado–Cálido','Moderado')">
+        <div class="variedad-img"><img src="images/zucchini-grey.jpg" alt="Zucchini Grey"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Grey Zucchini</div>
+          <div class="variedad-tipo">Zucchini gris</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- PEPINO -->
+      <div class="variedad-card" data-cat="pepino" style="display:none"
+        onclick="verDetalle('Pepino Europeo','Pepino · Largo','Pepino largo sin semillas, piel fina y suave. Ideal para ensaladas frescas y sándwiches.','🥒','55 días','300–400g','Templado','Regular')">
+        <div class="variedad-img"><img src="images/pepino-europeo.jpg" alt="Pepino Europeo"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Europeo</div>
+          <div class="variedad-tipo">Pepino largo</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="pepino" style="display:none"
+        onclick="verDetalle('Pepino Persa','Pepino · Mini','Pepino corto y crujiente sin semillas. Perfecto para snacks saludables y platillos frescos.','🥒','50 días','80–120g','Cálido','Regular')">
+        <div class="variedad-img"><img src="images/pepino-persa.jpg" alt="Pepino Persa"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Persa</div>
+          <div class="variedad-tipo">Pepino mini</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- OTROS -->
+      <div class="variedad-card" data-cat="otros" style="display:none"
+        onclick="verDetalle('Lechuga Romana','Lechuga · Hoja','Lechuga de hojas alargadas y crujientes, base clásica para ensaladas Caesar. Crecimiento rápido.','🥬','55 días','300–500g','Fresco','Regular')">
+        <div class="variedad-img"><img src="images/lechuga-romana.png" alt="Lechuga Romana"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Lechuga Romana</div>
+          <div class="variedad-tipo">Lechuga de hoja</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="otros" style="display:none"
+        onclick="verDetalle('Cilantro Común','Hierba · Aromática','Hierba aromática esencial en la cocina costarricense. Siembra directa, cosecha rápida.','🌿','40 días','Manojo','Fresco–Templado','Frecuente')">
+        <div class="variedad-img"><img src="images/cilantro.jpg" alt="Cilantro Común"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Cilantro Común</div>
+          <div class="variedad-tipo">Hierba aromática</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="otros" style="display:none"
+        onclick="verDetalle('Rábano Rojo','Raíz · Rápido','Raíz de crecimiento ultra rápido, ideal para huertos caseros. Sabor picante y crujiente.','🌱','25 días','20–30g','Fresco','Regular')">
+        <div class="variedad-img"><img src="images/rabano.jpg" alt="Rábano Rojo"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Rábano Rojo</div>
+          <div class="variedad-tipo">Raíz rápida</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+      <div class="variedad-card" data-cat="otros" style="display:none"
+        onclick="verDetalle('Zanahoria Nantes','Raíz · Clásica','Zanahoria cilíndrica de punta redondeada. Dulce, crujiente y de color naranja intenso.','🥕','70 días','80–120g','Fresco–Templado','Moderado')">
+        <div class="variedad-img"><img src="images/zanahoria.jpg" alt="Zanahoria Nantes"></div>
+        <div class="variedad-info">
+          <div class="variedad-nombre">Zanahoria Nantes</div>
+          <div class="variedad-tipo">Raíz clásica</div>
+          <div class="variedad-arrow">→</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ver-todo-btn">
+      <a href="catalogo.html" class="btn-outline">Abrir catálogo completo</a>
+    </div>
+  </section>
+
+  <!-- ═══ PREVIEW: DETALLE DE VARIEDAD ═══ -->
+  <section class="demo-variedad" id="detalle-variedad">
+    <div class="demo-label">✦ Así se ve la página individual de cada variedad ✦</div>
+    <div class="variedad-detalle">
+      <div class="variedad-detalle-img" id="detalle-emoji">🍅</div>
+      <div class="variedad-detalle-info">
+        <div class="variedad-detalle-tipo" id="detalle-tipo">Tomate · Variedad híbrida</div>
+        <h2 class="variedad-detalle-nombre" id="detalle-nombre">Roma F1</h2>
+        <p class="variedad-detalle-desc" id="detalle-desc">Variedad de tomate de alta producción, ideal para cultivo
+          intensivo. Fruto firme de color rojo intenso, con excelente vida postcosecha.</p>
+        <div class="variedad-specs">
+          <div class="spec">
+            <div class="spec-label">Ciclo</div>
+            <div class="spec-valor" id="spec-ciclo">75 días</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Peso</div>
+            <div class="spec-valor" id="spec-peso">90–110g</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Clima</div>
+            <div class="spec-valor" id="spec-clima">Cálido</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Riego</div>
+            <div class="spec-valor" id="spec-riego">Moderado</div>
+          </div>
+        </div>
+        <a href="#contacto" class="btn-primario" style="font-size:13px; padding:12px 24px;">Consultar disponibilidad
+          →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PÁGINA: ACERCA DE ═══ -->
+  <section class="seccion" id="acerca">
+    <div class="acerca">
+      <div>
+        <div class="seccion-tag">Nuestra historia</div>
+        <h2 class="acerca-titulo">¿Quiénes somos?</h2>
+        <p class="acerca-texto">Somos Agrícola KC, una empresa dedicada a la importación, venta y desarrollo de semillas
+          de hortalizas, vegetales y flores.</p>
+        <p class="acerca-texto">Nos caracteriza el compromiso con la calidad y la innovación, ofreciendo a nuestros
+          clientes un acompañamiento personalizado en cada etapa del proceso de siembra, cultivo y cosecha para lograr
+          los mejores resultados.</p>
+        <p class="acerca-texto" style="font-weight:600; color:var(--verde);">Demos juntos el paso hacia un futuro más
+          verde e innovador.</p>
+      </div>
+      <div class="acerca-img">📷 Foto de la empresa aquí</div>
+    </div>
+  </section>
+
+  <!-- ═══ PÁGINA: CONTACTO ═══ -->
+  <section class="seccion contacto" id="contacto">
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <h2>¿Listos para sembrar el futuro?</h2>
+        <p>Cada gran cosecha comienza con una conversación. Escribinos y te asesoramos en la elección de las mejores
+          variedades para tu cultivo.</p>
+        <div class="contacto-datos">
+          <div class="dato">
+            <div class="dato-icon">✉</div>agrikccr@gmail.com
+          </div>
+          <div class="dato">
+            <div class="dato-icon">📞</div>(+506) 6224-2553 / 2431-1980
+          </div>
+          <div class="dato">
+            <div class="dato-icon">📍</div>Alajuela, Central, San Isidro — 350mts norte de la Corte Suprema
+          </div>
+          <div class="dato">
+            <div class="dato-icon">🕐</div>Lun–Vie: 8am a 5pm · Sáb–Dom: cerrado
+          </div>
+        </div>
+      </div>
+      <div>
+        <form onsubmit="enviarFormulario(event)">
+          <div class="form-fila">
+            <div class="form-campo"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+            <div class="form-campo"><label>Apellido</label><input type="text" placeholder="Tu apellido" required></div>
+          </div>
+          <div class="form-campo"><label>Correo electrónico</label><input type="email" placeholder="correo@ejemplo.com"
+              required></div>
+          <div class="form-campo"><label>Mensaje</label><textarea placeholder="¿En qué podemos ayudarte?"
+              required></textarea></div>
+          <button type="submit" class="btn-enviar">Enviar mensaje →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-col">
+      <h4>Ubicación</h4>
+      <p>Alajuela, Central, San Isidro<br>350mts norte de la Corte Suprema de Justicia</p>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <p>Lunes a Viernes: 8am a 5pm<br>Sábado y domingo: cerrado</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>agrikccr@gmail.com<br>(+506) 6224-2553 / 2431-1980</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+     PROPUESTA COMERCIAL (solo para la clienta)
+═══════════════════════════════════════════════════════ -->
+  <div class="propuesta" id="propuesta" style="display: none;">
+    <div class="propuesta-header">
+      <div class="seccion-tag">Propuesta comercial</div>
+      <h2>Alcance del proyecto</h2>
+      <p>Todo lo que incluye el desarrollo completo del sitio web de Agrícola KC en Squarespace.</p>
+    </div>
+
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-icon">🏠</div>
+        <div class="scope-titulo">Página de Inicio</div>
+        <div class="scope-desc">Hero con imagen del campo, slogan, botón CTA a productos. Diseño a 2 columnas con la
+          marca existente.</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🗂️</div>
+        <div class="scope-titulo">Sección Variedades</div>
+        <div class="scope-desc">Filtro por categorías (Tomate, Chile, Sandía, etc.). Grid de tarjetas con imagen y
+          nombre. Click lleva al detalle.</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">📄</div>
+        <div class="scope-titulo">Páginas de Producto</div>
+        <div class="scope-desc">Página individual por variedad con: imagen principal, galería, descripción y
+          especificaciones técnicas.</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">ℹ️</div>
+        <div class="scope-titulo">Página "Acerca de"</div>
+        <div class="scope-desc">Sección ¿Quiénes somos? con texto y foto de la empresa. Misión y valores de Agrícola KC.
+        </div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">📧</div>
+        <div class="scope-titulo">Formulario de Contacto</div>
+        <div class="scope-desc">Formulario funcional conectado a agrikccr@gmail.com vía Squarespace Form Block (Storage
+          → Email).</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">📱</div>
+        <div class="scope-titulo">Diseño Responsivo</div>
+        <div class="scope-desc">Todas las secciones optimizadas para celular, tablet y desktop. Sin scroll excesivo.
+        </div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🎨</div>
+        <div class="scope-titulo">Marca y Estilos</div>
+        <div class="scope-desc">Se conservan los colores verdes, tipografía y estilo visual existente. Cero cambios de
+          identidad.</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🔗</div>
+        <div class="scope-titulo">Dominio agrikcseeds.com</div>
+        <div class="scope-desc">Configuración y conexión del dominio una vez se resuelva la suspensión. DNS apuntando a
+          Squarespace.</div>
+        <span class="scope-status status-pendiente">⏳ Pendiente dominio</span>
+      </div>
+      <div class="scope-card">
+        <div class="scope-icon">🔍</div>
+        <div class="scope-titulo">SEO Básico</div>
+        <div class="scope-desc">Títulos, meta descripciones, texto alt en imágenes. Sitemap y robots.txt nativos de
+          Squarespace.</div>
+        <span class="scope-status status-incluido">✓ Incluido</span>
+      </div>
+    </div>
+
+    <!-- Plan de trabajo -->
+    <div class="plan-trabajo">
+      <h3>Plan de trabajo</h3>
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <div class="paso-contenido">
+          <h4>Recepción de contenido</h4>
+          <p>La clienta envía: lista completa de categorías y variedades, imágenes de cada producto (mín. 800×600px), y
+            textos adicionales.</p>
+          <div class="paso-tiempo">⏱ Depende de la clienta</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <div class="paso-contenido">
+          <h4>Estructura de páginas en Squarespace</h4>
+          <p>Crear todas las páginas de producto, organizar categorías con tags, configurar navegación y estructura del
+            sitio.</p>
+          <div class="paso-tiempo">⏱ 1–2 días</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <div class="paso-contenido">
+          <h4>Carga de contenido y diseño</h4>
+          <p>Subir imágenes, textos, configurar Summary/Gallery Blocks filtrados por categoría, y afinar diseño visual.
+          </p>
+          <div class="paso-tiempo">⏱ 2–3 días</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <div class="paso-contenido">
+          <h4>Formulario + pruebas</h4>
+          <p>Conectar formulario al correo, probar envíos, verificar responsivo en móvil y tablet.</p>
+          <div class="paso-tiempo">⏱ 1 día</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">5</div>
+        <div class="paso-contenido">
+          <h4>Revisión y entrega</h4>
+          <p>Revisión con la clienta, ajustes finales, y publicación. Conexión del dominio cuando esté disponible.</p>
+          <div class="paso-tiempo">⏱ 1 día</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="pricing">
+      <div class="pricing-header">
+        <h3>Inversión del proyecto</h3>
+        <p>Desarrollo completo en Squarespace</p>
+      </div>
+      <div class="pricing-body">
+        <div class="pricing-item"><span class="pricing-item-label">Página de Inicio (Hero + Variedades)</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">Sección Variedades con filtro por
+            categoría</span><span class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">Páginas individuales de producto</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">Página "Acerca de"</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">Formulario de contacto funcional</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">Diseño responsivo completo</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-item"><span class="pricing-item-label">SEO básico + configuración dominio</span><span
+            class="pricing-item-valor">✓</span></div>
+        <div class="pricing-total">
+          <span>Total</span>
+          <span>$950</span>
+        </div>
+        <p class="pricing-nota">
+          * Precio a definir según cantidad final de productos.<br>
+          50% adelanto para iniciar · 50% al entregar.<br>
+          No incluye suscripción mensual de Squarespace ni compra de dominio.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pendientes -->
+    <div class="pendientes">
+      <h3>⚠️ Pendientes con la clienta</h3>
+      <ul>
+        <li>Foto del equipo o de la empresa para la sección "Acerca de"</li>
+        <li>Descripción de cada variedad (ciclo, peso, clima, etc.) — o autorización para redactarlas</li>
+        <li>Resolución de la suspensión del dominio agrikcseeds.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NOTAS DE IMPLEMENTACIÓN EN SQUARESPACE -->
+  <div class="nota-implementacion">
+    <h3>Cómo se implementará en Squarespace</h3>
+    <div class="impl-grid">
+      <div class="impl-card">
+        <h4>🗂️ Sección Variedades</h4>
+        <p>Usar <code>Summary Block</code> con filtro por categoría (tag). Cada categoría se crea como tag en las
+          páginas de producto. El Summary Block muestra las tarjetas filtradas con imagen y título automáticamente.</p>
+      </div>
+      <div class="impl-card">
+        <h4>📄 Páginas de Producto</h4>
+        <p>Cada variedad como página individual dentro de una colección <code>Blog</code> o <code>Products</code> (sin
+          carrito). Incluye Image Block, texto, y specs como Text Block formateado.</p>
+      </div>
+      <div class="impl-card">
+        <h4>📧 Formulario de Contacto</h4>
+        <p><code>Form Block</code> nativo de Squarespace. Configuración: <code>Storage → Email</code> apuntando a
+          agrikccr@gmail.com. Campos: Nombre, Apellido, Email, Mensaje.</p>
+      </div>
+      <div class="impl-card">
+        <h4>📱 Diseño Responsivo</h4>
+        <p>Squarespace maneja responsive automáticamente. Se ajustan paddings, fuentes y espaciado en el editor mobile.
+          Sin código custom necesario.</p>
+      </div>
+      <div class="impl-card">
+        <h4>🎨 Paleta de Colores</h4>
+        <p>Verde <code>#1a6b2f</code>, acento <code>#4caf70</code>, textos <code>#2c2c2c</code>. Configurado en
+          <code>Design → Site Styles</code> de Squarespace.
+        </p>
+      </div>
+      <div class="impl-card">
+        <h4>🔗 Navegación</h4>
+        <p>Menú con 4 enlaces: Inicio, Productos, Acerca de, Contacto. El menú mobile se genera como hamburger
+          automáticamente en Squarespace.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function mostrarCategoria(cat, btn) {
+      document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('activo'); });
+      btn.classList.add('activo');
+      document.querySelectorAll('.variedad-card').forEach(function (card) {
+        card.style.display = card.dataset.cat === cat ? 'block' : 'none';
+      });
+    }
+
+    function verDetalle(nombre, tipo, desc, emoji, ciclo, peso, clima, riego) {
+      var nombreLower = nombre.toLowerCase();
+      var imagenDetalle = 'none';
+
+      if (nombreLower.includes('roma')) {
+        imagenDetalle = "url('images/tomato-roma.jpg')";
+      } else if (nombreLower.includes('cherry')) {
+        imagenDetalle = "url('images/tomato-cherry.png')";
+      } else if (nombreLower.includes('marzano')) {
+        imagenDetalle = "url('images/tomato-marzano.png')";
+      } else if (nombreLower.includes('beefsteak')) {
+        imagenDetalle = "url('images/tomato-beefsteak.jpg')";
+      } else if (nombreLower.includes('jalapeño')) {
+        imagenDetalle = "url('images/chile-jalapeño.jpg')";
+      } else if (nombreLower.includes('habanero')) {
+        imagenDetalle = "url('images/chile-habanero.jpg')";
+      } else if (nombreLower.includes('dulce')) {
+        imagenDetalle = "url('images/chile-dulce.jpg')";
+      } else if (nombreLower.includes('cayena')) {
+        imagenDetalle = "url('images/chile-cayena.jpg')";
+      } else if (nombreLower.includes('crimson')) {
+        imagenDetalle = "url('images/sandia-crimson-sweet.jpg')";
+      } else if (nombreLower.includes('sugar')) {
+        imagenDetalle = "url('images/sandia-sugar-baby.jpg')";
+      } else if (nombreLower.includes('charleston')) {
+        imagenDetalle = "url('images/sandia-charleston-gray.png')";
+      } else if (nombreLower.includes('verde italia')) {
+        imagenDetalle = "url('images/zucchini-verde-italia.jpg')";
+      } else if (nombreLower.includes('gold rush')) {
+        imagenDetalle = "url('images/zucchini-gold-rush.jpg')";
+      } else if (nombreLower.includes('grey')) {
+        imagenDetalle = "url('images/zucchini-grey.jpg')";
+      } else if (nombreLower.includes('europeo')) {
+        imagenDetalle = "url('images/pepino-europeo.jpg')";
+      } else if (nombreLower.includes('persa')) {
+        imagenDetalle = "url('images/pepino-persa.jpg')";
+      } else if (nombreLower.includes('romana')) {
+        imagenDetalle = "url('images/lechuga-romana.png')";
+      } else if (nombreLower.includes('cilantro')) {
+        imagenDetalle = "url('images/cilantro.jpg')";
+      } else if (nombreLower.includes('rábano')) {
+        imagenDetalle = "url('images/rabano.jpg')";
+      } else if (nombreLower.includes('zanahoria')) {
+        imagenDetalle = "url('images/zanahoria.jpg')";
+      }
+
+      document.getElementById('detalle-nombre').textContent = nombre;
+      document.getElementById('detalle-tipo').textContent = tipo;
+      document.getElementById('detalle-desc').textContent = desc;
+      document.getElementById('detalle-emoji').textContent = '';
+      document.getElementById('detalle-emoji').style.backgroundImage = imagenDetalle;
+      document.getElementById('spec-ciclo').textContent = ciclo;
+      document.getElementById('spec-peso').textContent = peso;
+      document.getElementById('spec-clima').textContent = clima;
+      document.getElementById('spec-riego').textContent = riego;
+      document.getElementById('detalle-variedad').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('navLinks').classList.remove('open');
+        }
+      });
+    });
+
+    window.addEventListener('scroll', function () {
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('.nav-links a');
+      var scrollPos = window.scrollY + 100;
+      sections.forEach(function (section) {
+        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+          var id = section.getAttribute('id');
+          navLinks.forEach(function (link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) { link.classList.add('active'); }
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

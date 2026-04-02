@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo — Agrícola KC</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1a6b2f;
+      --verde-medio: #2d8a4e;
+      --verde-claro: #e8f5ed;
+      --verde-fondo: #f7fbf8;
+      --texto: #253028;
+      --muted: #617062;
+      --blanco: #fff;
+      --radio: 18px;
+      --sombra: 0 12px 30px rgba(20, 56, 30, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      color: var(--texto);
+      background: var(--blanco);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .banner {
+      background: linear-gradient(90deg, #0f3d1c, var(--verde));
+      color: white;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 13px;
+      letter-spacing: .4px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #edf1ed;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 48px;
+      min-height: 88px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 0;
+      color: var(--verde);
+    }
+
+    .logo img {
+      width: 220px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      color: var(--texto);
+    }
+
+    .nav-links a:hover {
+      color: var(--verde);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      padding: 70px 48px 38px;
+      align-items: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbf8 100%);
+    }
+
+    .eyebrow {
+      color: var(--verde-medio);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--verde);
+      font-size: 58px;
+      line-height: 1.06;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 26px;
+    }
+
+    .hero-media {
+      min-height: 360px;
+      border-radius: 24px;
+      background: url('images/hero-catalogo.jpg') center/cover no-repeat;
+      box-shadow: var(--sombra);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--verde);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 48px 28px;
+    }
+
+    .chip {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--verde-claro);
+      color: var(--verde);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .catalogo-section {
+      padding: 40px 48px;
+    }
+
+    .catalogo-section:nth-child(even) {
+      background: var(--verde-fondo);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--verde);
+      font-size: 40px;
+      margin-bottom: 6px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 16px;
+    }
+
+    .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radio);
+      overflow: hidden;
+      border: 1px solid #e6ede7;
+      box-shadow: 0 6px 20px rgba(16, 52, 25, 0.05);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra);
+    }
+
+    .card img {
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--verde-claro);
+      color: var(--verde);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      color: var(--verde);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .footer-cta {
+      padding: 60px 48px 70px;
+      background: #0f3d1c;
+      color: white;
+      text-align: center;
+    }
+
+    .footer-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .footer-cta p {
+      max-width: 720px;
+      margin: 0 auto 22px;
+      opacity: .86;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1100px) {
+      .catalogo-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      nav,
+      .hero,
+      .chips,
+      .catalogo-section,
+      .footer-cta {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 44px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .section-head h2 {
+        font-size: 32px;
+      }
+
+      .catalogo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .catalogo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">📋 Catálogo demo de Agrícola KC — página separada para ordenar mejor todas las variedades</div>
+
+  <nav>
+    <a class="logo" href="index.html" aria-label="Agrícola KC inicio">
+      <img src="images/logo-agricola-kc.svg" alt="Agrícola KC">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#tomate">Tomate</a></li>
+      <li><a href="#chile">Chile</a></li>
+      <li><a href="#sandia">Sandía</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Catálogo completo</div>
+      <h1>Nuestro catálogo de variedades</h1>
+      <p>Esta página organiza mejor todas las variedades por categoría para que la clienta vea cómo se puede presentar
+        el catálogo de productos en Squarespace de forma más clara y profesional.</p>
+      <a class="btn" href="index.html#contacto">Consultar disponibilidad →</a>
+    </div>
+    <div class="hero-media"></div>
+  </section>
+
+  <div class="chips">
+    <a class="chip" href="#tomate">🍅 Tomate</a>
+    <a class="chip" href="#chile">🌶️ Chile</a>
+    <a class="chip" href="#sandia">🍉 Sandía</a>
+    <a class="chip" href="#zucchini">🥒 Zucchini</a>
+    <a class="chip" href="#pepino">🥒 Pepino</a>
+    <a class="chip" href="#otros">🌱 Otros</a>
+  </div>
+
+  <section class="catalogo-section" id="tomate">
+    <div class="section-head">
+      <div>
+        <h2>Tomate</h2>
+        <p>Variedades híbridas y comerciales para alta producción, excelente presentación y buena vida postcosecha.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/tomato-roma.jpg" alt="Tomate Roma F1">
+        <div class="card-body"><span class="badge">Tomate</span>
+          <h3>Roma F1</h3>
+          <p>Tomate industrial de fruto firme, uniforme y de gran rendimiento.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/tomato-cherry.png" alt="Tomate Cherry">
+        <div class="card-body"><span class="badge">Tomate</span>
+          <h3>Cherry</h3>
+          <p>Frutos pequeños, dulces y atractivos para venta fresca y ensaladas.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/tomato-marzano.png" alt="Tomate Marzano">
+        <div class="card-body"><span class="badge">Tomate</span>
+          <h3>Marzano</h3>
+          <p>Tomate alargado ideal para salsas, conservas y uso culinario.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/tomato-beefsteak.jpg" alt="Tomate Beefsteak">
+        <div class="card-body"><span class="badge">Tomate</span>
+          <h3>Beefsteak</h3>
+          <p>Tomate grande y carnoso, excelente para rodajas y mercado premium.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="catalogo-section" id="chile">
+    <div class="section-head">
+      <div>
+        <h2>Chile</h2>
+        <p>Opciones picantes y dulces, pensadas para productores que buscan sabor, rendimiento y resistencia.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/chile-jalapeño.jpg" alt="Chile Jalapeño">
+        <div class="card-body"><span class="badge">Chile</span>
+          <h3>Jalapeño</h3>
+          <p>Variedad versátil, de picor medio y muy buena aceptación comercial.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/chile-habanero.jpg" alt="Chile Habanero">
+        <div class="card-body"><span class="badge">Chile</span>
+          <h3>Habanero</h3>
+          <p>Chile aromático y muy picante, ideal para salsas especiales.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/chile-dulce.jpg" alt="Chile Dulce">
+        <div class="card-body"><span class="badge">Chile</span>
+          <h3>Chile Dulce</h3>
+          <p>Sin picante, de pulpa gruesa y excelente presentación en fresco.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/chile-cayena.jpg" alt="Chile Cayena">
+        <div class="card-body"><span class="badge">Chile</span>
+          <h3>Cayena</h3>
+          <p>Chile fino y picante, ideal para uso seco o molienda.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="catalogo-section" id="sandia">
+    <div class="section-head">
+      <div>
+        <h2>Sandía</h2>
+        <p>Variedades de pulpa dulce, buen tamaño y comportamiento confiable para clima cálido.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/sandia-crimson-sweet.jpg" alt="Sandía Crimson Sweet">
+        <div class="card-body"><span class="badge">Sandía</span>
+          <h3>Crimson Sweet</h3>
+          <p>Clásica variedad rayada con pulpa roja intensa y sabor dulce.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/sandia-sugar-baby.jpg" alt="Sandía Sugar Baby">
+        <div class="card-body"><span class="badge">Sandía</span>
+          <h3>Sugar Baby</h3>
+          <p>Fruto compacto, ideal para mercados que buscan sandías personales.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/sandia-charleston-gray.png" alt="Sandía Charleston Gray">
+        <div class="card-body"><span class="badge">Sandía</span>
+          <h3>Charleston Gray</h3>
+          <p>Variedad alargada, de buen peso y gran rendimiento en campo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="catalogo-section" id="zucchini">
+    <div class="section-head">
+      <div>
+        <h2>Zucchini</h2>
+        <p>Ahora sí con imágenes alineadas al producto: zucchini verde, amarillo y gris.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/zucchini-verde-italia.jpg" alt="Zucchini Verde Italia">
+        <div class="card-body"><span class="badge">Zucchini</span>
+          <h3>Verde Italia</h3>
+          <p>Variedad clásica de rápido crecimiento y excelente cosecha temprana.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/zucchini-gold-rush.jpg" alt="Zucchini Gold Rush">
+        <div class="card-body"><span class="badge">Zucchini</span>
+          <h3>Gold Rush</h3>
+          <p>Zucchini amarillo de apariencia gourmet y sabor suave.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/zucchini-grey.jpg" alt="Zucchini Grey">
+        <div class="card-body"><span class="badge">Zucchini</span>
+          <h3>Grey Zucchini</h3>
+          <p>Piel gris verdosa, textura firme y gran aceptación comercial.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="catalogo-section" id="pepino">
+    <div class="section-head">
+      <div>
+        <h2>Pepino</h2>
+        <p>Opciones frescas y crujientes para mercado local, ensaladas y presentación premium.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/pepino-europeo.jpg" alt="Pepino Europeo">
+        <div class="card-body"><span class="badge">Pepino</span>
+          <h3>Europeo</h3>
+          <p>Pepino largo, uniforme y de piel fina, ideal para venta en fresco.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/pepino-persa.jpg" alt="Pepino Persa">
+        <div class="card-body"><span class="badge">Pepino</span>
+          <h3>Persa</h3>
+          <p>Mini pepino crujiente y sin semillas, excelente para snacks.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="catalogo-section" id="otros">
+    <div class="section-head">
+      <div>
+        <h2>Otros productos</h2>
+        <p>Más opciones de hoja, raíz y aromáticas que complementan el catálogo.</p>
+      </div>
+    </div>
+    <div class="catalogo-grid">
+      <article class="card">
+        <img src="images/lechuga-romana.png" alt="Lechuga Romana">
+        <div class="card-body"><span class="badge">Hoja</span>
+          <h3>Lechuga Romana</h3>
+          <p>Lechuga crujiente y fresca, muy apreciada en ensaladas.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/cilantro.jpg" alt="Cilantro Común">
+        <div class="card-body"><span class="badge">Aromática</span>
+          <h3>Cilantro Común</h3>
+          <p>Hierba aromática esencial en cocina y de rápida rotación.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/rabano.jpg" alt="Rábano Rojo">
+        <div class="card-body"><span class="badge">Raíz</span>
+          <h3>Rábano Rojo</h3>
+          <p>Raíz de ciclo corto, buena para producción rápida y continua.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/zanahoria.jpg" alt="Zanahoria Nantes">
+        <div class="card-body"><span class="badge">Raíz</span>
+          <h3>Zanahoria Nantes</h3>
+          <p>Zanahoria clásica de color uniforme y sabor suave.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <h2>¿Te gusta este orden del catálogo?</h2>
+    <p>Esta estructura sirve para mostrar todo más limpio: una página principal de presentación y una página aparte con
+      el catálogo completo.</p>
+    <div class="footer-links">
+      <a href="index.html">← Volver al inicio</a>
+      <a href="index.html#contacto">Ir a contacto</a>
+    </div>
+  </section>
+</body>
+
+</html>
